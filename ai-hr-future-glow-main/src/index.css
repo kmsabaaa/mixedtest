@@ -1,0 +1,172 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 197 71% 73%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 28% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 197 71% 73%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 197 71% 73%;
+
+    --radius: 0.5rem;
+
+    --neon-blue: #00d4ff;
+    --neon-cyan: #00ffff;
+    --neon-purple: #bf00ff;
+    --enhance-red: #ff1744;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-['Space_Grotesk'];
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  [dir="rtl"] {
+    direction: rtl;
+  }
+  
+  [dir="rtl"] .rtl-flip {
+    transform: scaleX(-1);
+  }
+}
+
+@layer components {
+  .neon-glow {
+    box-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 30px var(--neon-cyan);
+  }
+  
+  .enhance-glow {
+    box-shadow: 0 0 10px var(--enhance-red), 0 0 20px var(--enhance-red);
+  }
+  
+  .floating-shape {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .floating-shape:nth-child(even) {
+    animation-delay: -3s;
+  }
+  
+  .skyline-building {
+    animation: buildingGlow 4s ease-in-out infinite alternate;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, var(--neon-blue), var(--neon-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-10px) rotate(5deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(-3deg);
+    }
+    75% {
+      transform: translateY(-15px) rotate(7deg);
+    }
+  }
+  
+  @keyframes buildingGlow {
+    0% {
+      box-shadow: 0 0 5px var(--neon-blue);
+    }
+    100% {
+      box-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+    }
+  }
+  
+  @keyframes pulse-neon {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  @keyframes slide-in-right {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-in-left {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-pulse-neon {
+    animation: pulse-neon 2s ease-in-out infinite;
+  }
+  
+  .animate-slide-in-right {
+    animation: slide-in-right 0.8s ease-out;
+  }
+  
+  .animate-slide-in-left {
+    animation: slide-in-left 0.8s ease-out;
+  }
+}
